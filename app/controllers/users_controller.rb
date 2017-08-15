@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
+  STATES = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RS','RO','RR','SC','SE','SP','TO'].freeze
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
+    #@users = User.all
+
+    params[:inicial_date] = Date.today.beginning_of_month unless params[:inicial_date]
+    params[:final_date] = Date.today.end_of_month unless params[:final_date]
     @users = User.all
+    @users = @users.filter_by_name(params[:campo]) if params[:campo]
+    inicial_date = params[:inicial_date].to_date rescue nil
+    final_date = params[:final_date].to_date rescue nil
+    @users = @users.filter_by_initial_date(inicial_date) if inicial_date
+    @users = @users.filter_by_final_date(final_date) if final_date
   end
 
   # GET /users/1
@@ -69,6 +80,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :birthdate, :gender, :email_messages, locals_attributes: [:id, :_destroy])
     end
 end

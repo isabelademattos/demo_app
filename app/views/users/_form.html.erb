@@ -15,10 +15,29 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.label :birthdate %><br>
+    <%= f.date_field :birthdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select :gender, ['F', 'M']%>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+
+  <div class="field">
+    <%= f.label 'Receive e-mails' %><br>
+    <%= f.check_box :email_messages %>
+  </div>
+
+  <br/>
+
   <div class="actions">
     <%= f.submit %>
   </div>
