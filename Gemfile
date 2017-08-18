@@ -32,9 +32,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'cocoon'
 gem 'rspec-rails'
 gem 'capybara'
+gem 'factory_girl_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -46,4 +46,4 @@ gem 'capybara'
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+ gem 'byebug', group: [:development, :test]

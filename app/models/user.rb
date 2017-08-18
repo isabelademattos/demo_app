@@ -1,13 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :microposts, dependent: :destroy
-	#has_many :locals, dependent: :destroy
-
-
-  	#attr_accessible :local_attributes
-  	has_many :locals
-	#has_many :locals, dependent: :destroy, inverse_of: :user
-	accepts_nested_attributes_for :locals, reject_if: :all_blank, allow_destroy: true
-	#accepts_nested_attributes_for :locals, :reject_if => :all_blank, :allow_destroy => true
+	has_many :locals, inverse_of: :user, dependent: :destroy
 
 	validates :name, presence: true, length: { minimum: 1 }
 

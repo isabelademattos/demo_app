@@ -35,7 +35,7 @@ class LocalsController < ApplicationController
   def create
     #@local = Local.new(local_params)
     #@user = User.find(params[:user_id])
-    @local = @user.locals.create(local_params)
+    @local = @user.locals.build(local_params)
 
     respond_to do |format|
       if @local.save

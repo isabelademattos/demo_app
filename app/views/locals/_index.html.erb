@@ -1,0 +1,52 @@
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th></th>
+      <th>Number</th>
+      <th></th>
+      <th>Compl</th>
+      <th></th>
+      <th>District</th>
+      <th></th>
+      <th>City</th>
+      <th></th>
+      <th>State</th>
+      <th></th>
+      <th>Zip</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.locals.order("created_at DESC").each do |local|%>
+    <tr>
+      <td><%= local.address %></td>
+      <td> | </td>
+      <td><%= local.number %></td>
+      <td> | </td>
+      <td><%= local.compl %></td>
+      <td> | </td>
+      <td><%= local.district %></td>
+      <td> | </td>
+      <td><%= local.city %></td>
+      <td> | </td>
+      <td><%= local.state %></td>
+      <td> | </td>
+      <td><%= local.zip %></td>
+      <td> | </td>
+      <td><%= link_to 'Show', [@user, local] %></td>
+      <td><%= link_to 'Edit', edit_user_local_path(@user, local) %></td>
+      <td><%= link_to 'Destroy', [@user, local], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<p>
+<%= link_to 'New Address', new_user_local_path(@user) %>
+</p>
