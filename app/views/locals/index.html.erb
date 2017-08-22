@@ -1,3 +1,5 @@
+<h1>Locals</h1>
+
 <table>
   <thead>
     <tr>
@@ -17,12 +19,11 @@
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @user.locals.order("created_at DESC").each do |local|%>
+    <% @user.locals.order("user_id DESC").each do |local|%>
     <tr>
       <td><%= local.address %></td>
       <td> | </td>
@@ -40,13 +41,8 @@
       <td> | </td>
       <td><%= link_to 'Show', [@user, local] %></td>
       <td><%= link_to 'Edit', edit_user_local_path(@user, local) %></td>
-      <td><%= link_to 'Destroy', [@user, local], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Delete', [@user, local], method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-</div>
-
-<p>
-<%= link_to 'New Address', new_user_local_path(@user) %>
-</p>

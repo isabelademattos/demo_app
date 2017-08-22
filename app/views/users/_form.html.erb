@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -36,8 +36,37 @@
     <%= f.check_box :email_messages %>
   </div>
 
-  <div>
-    <%= render 'locals/index' %>
+  <h1>Locals</h1>
+
+  <div id="locals">
+    <table>
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Number</th>
+          <th>Compl</th>
+          <th>District</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= f.fields_for :locals do |local| %>
+        <tr>
+          <%= render 'local_fields', f: local %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="links">
+      <br/>
+      <%= link_to_add_association 'Add local', f, :locals %>
+      <br/>
+    </div>
   </div>
 
   <br/>
