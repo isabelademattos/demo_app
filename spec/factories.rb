@@ -11,6 +11,6 @@ FactoryGirl.define do
 
   factory :local do
     sequence(:address)  { |n| "Person #{n}" }
-    sequence(:user_id)
+    user
   end
 end

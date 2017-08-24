@@ -1,10 +1,6 @@
 DemoApp::Application.routes.draw do
-  
+
   root to: "user#index"
-  
-  resources :users do
-    resources :microposts
-  end
 
   resources :users do
     resources :locals#, only: [:index, :new, :create]
@@ -13,8 +9,7 @@ DemoApp::Application.routes.draw do
   #resources :locals, only: [:show, :edit, :update, :destroy]
 
   #resources :locals
-  #resources :microposts
-  #resources :users 
+  #resources :users
 
 
   # The priority is based upon order of creation: first created -> highest priority.

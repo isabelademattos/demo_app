@@ -43,7 +43,6 @@ class LocalsController < ApplicationController
   end
 
   def destroy
-    @local = @user.locals.find(params[:id])
     @local.destroy
     respond_to do |format|
       format.html { redirect_to user_path(@user)}
@@ -61,6 +60,6 @@ class LocalsController < ApplicationController
     end
 
     def local_params
-      params.require(:local).permit(:address, :number, :compl, :district, :city, :state, :zip, :user_id)
+      params.require(:local).permit(:address,:number,:compl,:district,:city,:state,:zip,:user_id)
     end
 end

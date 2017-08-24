@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  STATES = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RS','RO','RR','SC','SE','SP','TO'].freeze
-
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,7 +16,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    1.times { @user.locals.build }
+    @user.locals.build
   end
 
   def edit; end
@@ -63,7 +61,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :birthdate, :gender, :email_messages, locals_attributes: [:id, :address, :number, :compl, :district, :city, :state, :zip, :_destroy])
+      params.require(:user).permit(:name,:email,:birthdate,:gender,:email_messages, locals_attributes: [:id,:address,:number,:compl,:district,:city,:state,:zip,:_destroy])
     end
 end
 
