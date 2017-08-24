@@ -1,0 +1,77 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate %><br>
+    <%= f.date_field :birthdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select :gender, ['F', 'M']%>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Receive e-mails' %><br>
+    <%= f.check_box :email_messages %>
+  </div>
+
+  <h1>Locals</h1>
+
+  <div id="locals">
+    <table>
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Number</th>
+          <th>Compl</th>
+          <th>District</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= f.fields_for :locals do |local| %>
+        <tr>
+          <%= render 'local_fields', f: local %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="links">
+      <br/>
+      <%= link_to_add_association 'Add local', f, :locals %>
+      <br/>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

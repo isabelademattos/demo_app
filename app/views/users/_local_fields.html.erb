@@ -1,0 +1,33 @@
+<div class="nested-fields">
+  <td class="field">
+    <%= f.text_field :address %>
+  </td>
+
+  <td class="field">
+    <%= f.text_field :number %>
+  </td>
+
+  <td class="field">
+    <%= f.text_field :compl %>
+  </td>
+
+  <td class="field">
+    <%= f.text_field :district %>
+  </td>
+
+  <td class="field">
+    <%= f.text_field :city %>
+  </td>
+
+  <td class="field">
+    <%= f.select :state, UsersHelper::STATES %>
+  </td>
+
+  <td class="field">
+    <%= f.text_field :zip %>
+  </td>
+
+  <td>
+    <%= link_to_remove_association 'Delete', f, data: { confirm: 'Are you sure?' } %>
+  </td>
+</div>
